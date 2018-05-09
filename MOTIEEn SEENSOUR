@@ -3,12 +3,13 @@ from time import sleep
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8, INPUT)
-GPIO.setup(10, OUTPUT)
 
 while True:
     if(GPIO.input(8)==1):
         print("Motion detected")
         time.sleep(0.1)
+        
+GPIO.cleanup()
 
 
         
