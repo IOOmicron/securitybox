@@ -13,5 +13,7 @@ while True:
         sleep(7.5)
         cam.stop_recording()
         
+GPIO.cleanup()
+        
 
 
