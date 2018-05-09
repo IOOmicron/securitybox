@@ -1,0 +1,17 @@
+import picamera
+import RPi.GPIO as GPIO
+from time import sleep
+cam = picamera.PiCamera()
+
+cam.vflip = True
+cam.hflip = True
+cam.brightness = 60
+
+while True:
+    if(GPIO.input(8)==1):
+        cam.start_recording('Security footage.h264')
+        sleep(7.5)
+        cam.stop_recording()
+        
+
+
