@@ -1,18 +1,25 @@
 import picamera
+import os.path
 import RPi.GPIO as GPIO
 from time import sleep
 cam = picamera.PiCamera()
 
+filename = ('Security footage')
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8, INPUT)
 cam.vflip = True
 cam.hflip = True
 cam.brightness = 60
+cam.framerate = 30
+cam.resolution = (1920, 1080)
 
 while True:
     if(GPIO.input(8)==1):
-        cam.start_recording('Security footage.h264')
+        cam.start_recording(filename + '.h264')
         sleep(7.5)
         cam.stop_recording()
+        
+save_path = '/home/pi/securityfootage'
+completed_video = os.path.join(save_path, filename)
 
 GPIO.cleanup()
