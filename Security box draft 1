@@ -5,8 +5,8 @@ from time import sleep
 cam = picamera.PiCamera()
 
 filename = ('Security footage')
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(8, INPUT)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(8, GPIO.IN)
 cam.vflip = True
 cam.hflip = True
 cam.brightness = 60
